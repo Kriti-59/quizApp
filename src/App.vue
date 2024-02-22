@@ -1,56 +1,33 @@
+<script setup>
+
+import q from "./data/quizzes.json";
+
+import {ref} from "vue"
+
+
+const quizzes = ref(q)
+
+</script>
+
+
 <template>
 
   <div class = "container"> 
     <header>
-      <h1> Quizzes</h1>
+      <h1>Quizzes</h1>
       <input type="text" placeholder="Search for quiz..">
     </header>
     <div class="card-container">
-  <div class="card">
-    <img src="..\src\assets\geography.webp" alt="">
-    <div class="card-text">
-      <h2>Geography</h2>
+    <div v-for = "quiz in quizzes" :key = "quiz.id" class="card">
+      <img :src="quiz.img" alt="">
+      <div class="card-text">
+        <h2>{{ quiz.name }}</h2>
+        <p>{{ quiz.questions.length }} questions </p>
+      </div>
     </div>
-  </div>
-
-  <div class="card">
-    <img src="..\src\assets\mathematics.jpg" alt="">
-    <div class="card-text">
-      <h2>Mathematics</h2>
     </div>
-  </div>
-
-  <div class="card">
-    <img src="..\src\assets\chemistry.jpg" alt="">
-    <div class="card-text">
-      <h2>Chemistry</h2>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="..\src\assets\history.jpg" alt="">
-    <div class="card-text">
-      <h2>World History</h2>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="..\src\assets\computer.jpg" alt="">
-    <div class="card-text">
-      <h2>Computer Science</h2>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="..\src\assets\biology.jpg" alt="">
-    <div class="card-text">
-      <h2>Biology</h2>
-    </div>
-  </div>
 
 </div>
-
-  </div>
 </template>
 
 
